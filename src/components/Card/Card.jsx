@@ -7,7 +7,7 @@ const Card = ({formData}) => {
   return (
       <div>
           <CardHeader formData={formData} />
-          <CardAside/>
+          <CardAside formData={formData}/>
           <CardMain formData={formData}/>
     </div>
   )

@@ -4,11 +4,12 @@ import Fieldset from '../Fieldset/Fieldset'
 import Button from '../Button/Button'
 import EducationList from '../EducationList/EducationList'
 import ExperienceList from '../ExperienceList/ExperienceList'
+import s from '../Form/Form.module.css'
 
-const Form = ({handleAdd, showExp, handleDelete, handleDeleteEdu, handleAddEdu, showEdu, handleInputChange, formData}) => {
+const Form = ({handleAdd, showExp, handleDelete, handleDeleteEdu, handleAddEdu, showEdu, handleInputChange, formData, handlePrint, handleResetForm}) => {
 
   return (
-    <form>
+    <form className={s.form}>
       <Fieldset title='Personal information'>
       <Input type="text" name="firstName" placeholder="First name" value={formData.firstName} onChange={handleInputChange} />
         <Input type="text" name="lastName" placeholder="Last name" value={formData.lastName} onChange={handleInputChange} />
@@ -20,12 +21,16 @@ const Form = ({handleAdd, showExp, handleDelete, handleDeleteEdu, handleAddEdu, 
         <Input type="text" name="description" placeholder="Description" value={formData.description} onChange={handleInputChange} />
       </Fieldset>
       <Fieldset title='Experience'>
-        <ExperienceList experienceList={showExp} handleDelete ={handleDelete} />
+        <ExperienceList experienceList={showExp} handleDelete ={handleDelete} onChange={handleInputChange} formData={formData} />
          <Button handleClick={handleAdd} text="Add" />
       </Fieldset>
       <Fieldset title='Education'>
-        <EducationList educationList={showEdu} handleDeleteEdu ={handleDeleteEdu} />
+        <EducationList educationList={showEdu} handleDeleteEdu ={handleDeleteEdu} onChange={handleInputChange} formData={formData}/>
          <Button handleClick={handleAddEdu} text="Add" />
+      </Fieldset>
+      <Fieldset>
+        <Button handleClick={handleResetForm} text='Reset Form' style={{ backgroundColor: 'red' }} />
+        <Button handleClick={handlePrint} text='Generate PDF'/>
       </Fieldset>
     </form>
   )

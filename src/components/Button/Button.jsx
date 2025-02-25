@@ -1,3 +1,5 @@
+import s from '../Button/Button.module.css'
+
 export default function Button({
   type = 'button',
   text,
@@ -7,6 +9,7 @@ export default function Button({
     <button
       type={type}
       onClick={handleClick}
+      className={s.button}
     >
       {text}
     </button>

@@ -1,12 +1,12 @@
 import React from 'react';
 import Education from '../Education/Education';
 
-const EducationList = ({ educationList, handleDeleteEdu }) => {
+const EducationList = ({ educationList, handleDeleteEdu, formData, onChange }) => {
   return (
     <ul>
       {educationList.map((edu) => (
         <li key={edu.id}>
-          <Education data={edu} handleDeleteEdu={handleDeleteEdu} />
+          <Education data={edu} handleDeleteEdu={handleDeleteEdu} onChange={onChange} formData={formData} />
         </li>
       ))}
     </ul>

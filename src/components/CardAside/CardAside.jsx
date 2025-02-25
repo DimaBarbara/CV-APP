@@ -1,19 +1,21 @@
 import React from 'react'
 
-const CardAside = () => {
+const CardAside = ({ formData }) => {
+    console.log(formData );
+    
   return (
       <div>
-          <img href='#' alt='UserPhoto' />
+          <img src={formData.photo} alt='UserPhoto' />
           <h3>Personal Details</h3>
           <div>
               <h4>Address
-                  <p>-</p>
+                  <p>{`${formData.address}`} </p>
               </h4>
               <h4>Phone Number
-                  <p>-</p>
+                  <p>{`${formData.phone}`} </p>
               </h4>
               <h4>Email
-                  <p>-</p>
+                  <p>{`${formData.email}`} </p>
               </h4>
           </div>
     </div>

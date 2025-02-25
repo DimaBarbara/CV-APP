@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import Header from '../Header/Header';
-import Form from '../Form/Form';
-import { experienceData } from '../../utils/constant';
-import { educationData } from '../../utils/constant';
+import React, { useState, useRef } from 'react';
+import Header from './Header/Header';
+import Form from './Form/Form';
+import { experienceData } from '../utils/constant';
+import { educationData } from '../utils/constant';
 import { nanoid } from 'nanoid';
-import Card from '../Card/Card';
+import Card from './Card/Card';
+import { useReactToPrint } from "react-to-print";
 
 const App = () => {
    const [formData, setFormData] = useState({
@@ -15,8 +16,25 @@ const App = () => {
     address: '',
     phone: '',
     email: '',
-    description: '',
+     description: '',
+     position: '',
+     company: '',
+     city: '',
+     fromExp: '',
+     toExp: '',
+     university: '',
+     cityEdu: '',
+     degree: '',
+     subject: '',
+     fromEdu: '',
+    toEdu: '',
+   });
+  const cardRef = useRef();
+
+   const handlePrint = useReactToPrint({
+    content: () => cardRef.current,
   });
+console.log(cardRef.current);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -51,6 +69,19 @@ const App = () => {
   const handleDeleteEdu = (eduId) => {
     setShowEdu((prevEdu) => prevEdu.filter((edu) => edu.id !== eduId))
   }  
+
+  function handleResetForm() {
+    if (formData && typeof formData === 'object') {
+      const resetData = Object.keys(formData).reduce((acc, key) => {
+        acc[key] = '';
+        return acc;
+      }, {})
+      setFormData(resetData)
+    }
+     setShowEdu([])
+    setShowExp([])
+  }
+ 
   return (
     <div>
       <Header />
@@ -62,9 +93,14 @@ const App = () => {
         handleAdd={handleAdd}
         showExp={showExp}
         handleInputChange={handleInputChange}
-      formData={formData}/>
+        formData={formData}
+        handlePrint={handlePrint}
+        handleResetForm={handleResetForm}
+      />
+      <div ref={cardRef}>
+        <Card formData={formData} />
+      </div>
       
-      <Card  formData={formData} />
       
     </div>
   );
