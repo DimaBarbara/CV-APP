@@ -1,4 +1,4 @@
-.header {
+.footer {
   background-color: rgb(37, 54, 77);
   display: flex;
   align-items: center;
@@ -7,12 +7,16 @@
   margin: 0 auto;
   max-width: 1200px;
   min-width: 320px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   padding: 20px;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
-.h1 {
-  font-size: 4vw;
+.small {
+  font-size: 1.5vw;
   color: aliceblue;
+  margin-right: 10px;
+}
+.img {
+  width: 2vw;
 }

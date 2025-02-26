@@ -1,40 +1,41 @@
-import React, { useState, useRef } from 'react';
-import Header from './Header/Header';
-import Form from './Form/Form';
-import { experienceData } from '../utils/constant';
-import { educationData } from '../utils/constant';
-import { nanoid } from 'nanoid';
-import Card from './Card/Card';
+import React, { useState, useRef } from "react";
+import Header from "./Header/Header";
+import Form from "./Form/Form";
+import { experienceData } from "../utils/constant";
+import { educationData } from "../utils/constant";
+import { nanoid } from "nanoid";
+import Card from "./Card/Card";
 import { useReactToPrint } from "react-to-print";
+import Footer from "./Footer/Footer";
 
 const App = () => {
-   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    title: '',
-    photo: '',
-    address: '',
-    phone: '',
-    email: '',
-     description: '',
-     position: '',
-     company: '',
-     city: '',
-     fromExp: '',
-     toExp: '',
-     university: '',
-     cityEdu: '',
-     degree: '',
-     subject: '',
-     fromEdu: '',
-    toEdu: '',
-   });
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    title: "",
+    photo: "",
+    address: "",
+    phone: "",
+    email: "",
+    description: "",
+    position: "",
+    company: "",
+    city: "",
+    fromExp: "",
+    toExp: "",
+    university: "",
+    cityEdu: "",
+    degree: "",
+    subject: "",
+    fromEdu: "",
+    toEdu: "",
+  });
   const cardRef = useRef();
 
-   const handlePrint = useReactToPrint({
+  const handlePrint = useReactToPrint({
     content: () => cardRef.current,
   });
-console.log(cardRef.current);
+  console.log(cardRef.current);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -45,10 +46,10 @@ console.log(cardRef.current);
   };
   const [showExp, setShowExp] = useState([]);
 
-    const handleAdd = () => {
+  const handleAdd = () => {
     const newExperience = {
-      id:nanoid(), 
-      fields: experienceData
+      id: nanoid(),
+      fields: experienceData,
     };
     setShowExp((prevExp) => [...prevExp, newExperience]);
   };
@@ -62,26 +63,26 @@ console.log(cardRef.current);
   const handleAddEdu = () => {
     const newEducation = {
       id: nanoid(),
-      fieldsEdu: educationData
+      fieldsEdu: educationData,
     };
-    setShowEdu((prevEdu) => [...prevEdu, newEducation])
-  }
+    setShowEdu((prevEdu) => [...prevEdu, newEducation]);
+  };
   const handleDeleteEdu = (eduId) => {
-    setShowEdu((prevEdu) => prevEdu.filter((edu) => edu.id !== eduId))
-  }  
+    setShowEdu((prevEdu) => prevEdu.filter((edu) => edu.id !== eduId));
+  };
 
   function handleResetForm() {
-    if (formData && typeof formData === 'object') {
+    if (formData && typeof formData === "object") {
       const resetData = Object.keys(formData).reduce((acc, key) => {
-        acc[key] = '';
+        acc[key] = "";
         return acc;
-      }, {})
-      setFormData(resetData)
+      }, {});
+      setFormData(resetData);
     }
-     setShowEdu([])
-    setShowExp([])
+    setShowEdu([]);
+    setShowExp([]);
   }
- 
+
   return (
     <div>
       <Header />
@@ -99,9 +100,8 @@ console.log(cardRef.current);
       />
       <div ref={cardRef}>
         <Card formData={formData} />
+        <Footer />
       </div>
-      
-      
     </div>
   );
 };

@@ -1,0 +1,13 @@
+.div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 794px;
+  height: 1123px;
+  margin: 0 auto;
+}
+.divMain {
+  display: flex;
+  background-color: aliceblue;
+  height: 100%;
+}

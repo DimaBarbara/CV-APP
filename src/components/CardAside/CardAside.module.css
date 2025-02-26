@@ -1,0 +1,28 @@
+.div {
+  display: flex;
+  width: 194px;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: rgb(176, 177, 177);
+  box-sizing: border-box;
+  padding: 10px;
+  gap: 10px;
+}
+.img {
+  width: 150px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.h3 {
+  font-size: 30px;
+  border-bottom: solid 1px;
+}
+.h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.p {
+  font-size: 15px;
+  padding: 10px;
+}
