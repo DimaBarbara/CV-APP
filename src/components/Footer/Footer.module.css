@@ -21,3 +21,18 @@
 .img {
   width: 2vw;
 }
+@media (max-width: 767px) {
+  .small {
+    font-size: 4vw;
+    color: aliceblue;
+    margin-right: 10px;
+  }
+  .img {
+    width: 8vw;
+  }
+}
+@media (max-width: 319px) {
+  .small {
+    font-size: 6vw;
+  }
+}

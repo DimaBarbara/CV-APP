@@ -17,3 +17,14 @@
   font-size: 4vw;
   color: aliceblue;
 }
+
+@media (max-width: 767px) {
+  .h1 {
+    font-size: 6vw;
+  }
+}
+@media (max-width: 319px) {
+  .h1 {
+    font-size: 8vw;
+  }
+}
