@@ -1,13 +1,12 @@
-import React, { useState, useRef } from "react";
-import Header from "../Header/Header";
-import Form from "../Form/Form";
-import { experienceData } from "../../utils/constant";
-import { educationData } from "../../utils/constant";
+import React, { useState, useRef, Suspense, lazy } from "react";
 import { nanoid } from "nanoid";
-import Card from "../Card/Card";
 import { useReactToPrint } from "react-to-print";
-import Footer from "../Footer/Footer";
 import s from "./App.module.css";
+
+const Header = lazy(() => import("../Header/Header"));
+const Footer = lazy(() => import("../Footer/Footer"));
+const Form = lazy(() => import("../Form/Form"));
+const Card = lazy(() => import("../Card/Card"));
 
 const App = () => {
   // Form main
@@ -103,29 +102,31 @@ const App = () => {
 
   return (
     <div className={s.mainDiv}>
-      <Header />
-      <Form
-        // Education
-        showEdu={showEdu}
-        handleDeleteEdu={handleDeleteEdu}
-        handleAddEdu={handleAddEdu}
-        handleChangeEdu={handleChangeEdu}
-        // Experience
-        showExp={showExp}
-        handleDeleteExp={handleDeleteExp}
-        handleAddExp={handleAddExp}
-        handleChangeExp={handleChangeExp}
-        // Form main
-        formData={formData}
-        handleInputChange={handleInputChange}
-        // Buttons
-        handlePrint={handlePrint}
-        handleResetForm={handleResetForm}
-      />
-      <div ref={cardRef}>
-        <Card formData={formData} dataExp={showExp} dataEdu={showEdu} />
-      </div>
-      <Footer />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Header />
+        <Form
+          // Education
+          showEdu={showEdu}
+          handleDeleteEdu={handleDeleteEdu}
+          handleAddEdu={handleAddEdu}
+          handleChangeEdu={handleChangeEdu}
+          // Experience
+          showExp={showExp}
+          handleDeleteExp={handleDeleteExp}
+          handleAddExp={handleAddExp}
+          handleChangeExp={handleChangeExp}
+          // Form main
+          formData={formData}
+          handleInputChange={handleInputChange}
+          // Buttons
+          handlePrint={handlePrint}
+          handleResetForm={handleResetForm}
+        />
+        <div ref={cardRef}>
+          <Card formData={formData} dataExp={showExp} dataEdu={showEdu} />
+        </div>
+        <Footer />
+      </Suspense>
     </div>
   );
 };

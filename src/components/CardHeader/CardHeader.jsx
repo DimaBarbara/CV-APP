@@ -2,8 +2,6 @@ import React from "react";
 import s from "../CardHeader/CardHeader.module.css";
 
 const CardHeader = ({ formData }) => {
-  console.log(formData);
-
   return (
     <div className={s.div}>
       <h2>

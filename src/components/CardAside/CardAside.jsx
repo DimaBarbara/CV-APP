@@ -2,8 +2,6 @@ import React from "react";
 import s from "../CardAside/CardAside.module.css";
 
 const CardAside = ({ formData }) => {
-  console.log(formData);
-
   return (
     <div className={s.div}>
       <img
