@@ -1,6 +1,6 @@
-import React from 'react'
-import uniqid from 'uniqid'
-import s from '../Input/Input.module.css'
+import React from "react";
+import uniqid from "uniqid";
+import s from "../Input/Input.module.css";
 
 export default function Input({
   id = uniqid(),
@@ -9,18 +9,16 @@ export default function Input({
   onChange,
   value,
   name,
- 
 }) {
-  
-    return (
-        <input
-             id={id}
-  type={type}
-  value={value}
-  onChange={onChange}
-        placeholder={placeholder}
-        name={name}
-        className={s.input}
-        ></input>
-        
- )};
+  return (
+    <input
+      id={id}
+      type={type}
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      name={name}
+      className={s.input}
+    ></input>
+  );
+}

@@ -1,13 +1,16 @@
-import React from 'react';
-import Experience from '../Experience/Experience';
+import React from "react";
+import Experience from "../Experience/Experience";
 
-const ExperienceList = ({ experienceList, handleDelete, onChange, formData }) => {
-  
+const ExperienceList = ({ handleChangeExp, handleDeleteExp, showExp }) => {
   return (
     <ul>
-      {experienceList.map((exp) => (
+      {showExp.map((exp) => (
         <li key={exp.id}>
-          <Experience data={exp} handleDelete={handleDelete} onChange={onChange} formData={formData} />
+          <Experience
+            data={exp}
+            handleDeleteExp={handleDeleteExp}
+            handleChangeExp={handleChangeExp}
+          />
         </li>
       ))}
     </ul>

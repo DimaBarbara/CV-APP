@@ -22,7 +22,7 @@ const CardAside = ({ formData }) => {
           <p className={s.p}>{`${formData.address}`} </p>
         </h4>
         <h4 className={s.h4}>
-          Phone Number
+          Phone number
           <p className={s.p}>{`${formData.phone}`} </p>
         </h4>
         <h4 className={s.h4}>
